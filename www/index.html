@@ -23,21 +23,24 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <title>Pricify.me | Mobile App</title>
     </head>
     <body>
         <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+            <!-- <h1 style="text-transform: none;">Pricify.me <br> Mobile</h1> -->
+			<p class="page-loader"> </p>
+            <div id="deviceready" class="blink" style="text-transform: none;">
+                <p class="event listening">Connecting to Pricify.me, Please Wait</p>
+                <p class="event received">Pricify.me is Ready</p>
+				
             </div>
+			
         </div>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
-			window.location.href="http://www.pricify.me/fetches?page=1";
+			//window.location.href="http://www.pricify.me/fetches?page=1";
         </script>
     </body>
 </html>
