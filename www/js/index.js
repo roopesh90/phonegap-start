@@ -40,11 +40,18 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
+        
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+        //added by roopesh
+        setTimeout(function(){
+            parentElement.getAttribute('class'); 
+             parentElement.className += " show-none";
+             iframeloader("http://54.225.113.123/fetches?page=1");
+        //iframeElement.className += " MyClass";
+        }, 300);
+         console.log('Received Event: ' + id);
     }
 };
 
@@ -77,3 +84,35 @@ req.onreadystatechange = function() {
 req.open('GET', url, true);
 req.send();
 }
+
+function iframeloader(url) {
+    var parentElement = document.getElementById("app");
+    var iframe = document.createElement("iframe");
+    iframe.src = url;
+    iframe.className ="show-none";
+    iframe.id ="pricfy-web";
+    document.body.appendChild(iframe);
+    if (navigator.userAgent.indexOf("MSIE") > -1 && !window.opera) {
+      iframe.onreadystatechange = function(){
+        if (iframe.readyState == "complete"){
+          //alert("Iframe is now loaded.");
+           // parentElement.getAttribute('class'); 
+             parentElement.setAttribute('class'," show-none");
+            var iframeElement = document.getElementById("pricfy-web");
+            iframeElement.setAttribute('class', 'show');
+            console.log('iframe loaded: ' + iframe.id);
+        }
+      };
+    } else {
+      iframe.onload = function(){
+        //alert("Iframe is now loaded.");
+           // parentElement.getAttribute('class'); 
+            parentElement.setAttribute('class'," show-none");
+            var iframeElement = document.getElementById("pricfy-web");
+            iframeElement.setAttribute('class', 'show');
+            console.log('iframe loaded: ' + iframe.id);
+      };
+    }   
+}
+
+

@@ -26,13 +26,12 @@
         <title>Pricify.me | Mobile App</title>
     </head>
     <body>
-        <div class="app">
+        <div class="app" id="app">
             <!-- <h1 style="text-transform: none;">Pricify.me <br> Mobile</h1> -->
 			<p class="page-loader"> </p>
             <div id="deviceready" class="blink" style="text-transform: none;">
                 <p class="event listening">Connecting to Pricify.me, Please Wait</p>
-                <p class="event received">Pricify.me is Ready</p>
-				
+                <p class="event received">Pricify.me is Ready</p>		
             </div>
 			
         </div>
@@ -41,8 +40,9 @@
         <script type="text/javascript">
             app.initialize();
 	    //window.location.href="http://54.225.113.123/fetches?page=1";
-	    loadHTML("http://54.225.113.123/fetches?page=1");
-	    
+	    //loadHTML("http://54.225.113.123/fetches?page=1");
+	     //iframeloader("http://54.225.113.123/fetches?page=1");
+	     iframeloader( "http://54.225.113.123/oauth/applications");
         </script>
     </body>
 </html>

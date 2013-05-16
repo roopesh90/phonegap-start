@@ -143,4 +143,12 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
-    
+.show{
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.show-none{
+    display: none;
+}
