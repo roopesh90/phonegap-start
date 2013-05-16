@@ -112,8 +112,8 @@ function iframeloader(url) {
             parentElement.setAttribute('class'," show-none");
             var iframeElement = document.getElementById("pricfy-web");
             iframeElement.setAttribute('class', 'show');
-            iframeElement.setAttribute('width', screen.width);
-            iframeElement.setAttribute('height', "100%");
+            iframeElement.setAttribute('width', screen.width+"px");
+            iframeElement.setAttribute('height', screen.height+"px");
             console.log('iframe loaded: ' + iframe.id);
       };
     }   
