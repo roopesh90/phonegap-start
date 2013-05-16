@@ -146,7 +146,12 @@ function doMenu() {
 // This function exits the app.
 function onExit(){
 	alert("close");
-        navigator.app.exitApp()
+        navigator.app.exitApp();
+        //return false;
+}
+
+function onMenu(){
+	alert("device"+device-width+device-height+"\nscreen"+screen.height+screen.width );
         return false;
 }
 
