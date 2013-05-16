@@ -53,6 +53,7 @@ var app = {
         //iframeElement.className += " MyClass";
         }, 300);
          console.log('Received Event: ' + id);
+         startup();
     }
 };
 
@@ -111,6 +112,8 @@ function iframeloader(url) {
             parentElement.setAttribute('class'," show-none");
             var iframeElement = document.getElementById("pricfy-web");
             iframeElement.setAttribute('class', 'show');
+            iframeElement.setAttribute('width', screen.width);
+            iframeElement.setAttribute('height', screen.height);
             console.log('iframe loaded: ' + iframe.id);
       };
     }   
