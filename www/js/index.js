@@ -47,3 +47,33 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+//Added by roopesh for pricify site inapp load
+
+function loadHTML(url, timeout) {
+if (timeout == undefined)
+    timeout = 10000;
+var req = new XMLHttpRequest();
+var timer = setTimeout(function() {
+    try {
+        req.abort();
+    } catch(e) {}
+    navigator.notification.loadingStop();
+},timeout);
+req.onreadystatechange = function() {
+    if (req.readyState == 4) {
+        if (req.status < 300) {
+            clearTimeout(timer);
+
+            var html = req.responseText;
+            //just a debug print   
+            alert(html);
+            document.write(html);
+        }
+        navigator.notification.loadingStop();
+        delete req;
+    }       
+};          
+req.open('GET', url, true);
+req.send();
+}
