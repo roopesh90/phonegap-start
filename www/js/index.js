@@ -112,8 +112,8 @@ function iframeloader(url) {
             parentElement.setAttribute('class'," show-none");
             var iframeElement = document.getElementById("pricfy-web");
             iframeElement.setAttribute('class', 'show');
-            iframeElement.setAttribute('width', screen.width);
-            iframeElement.setAttribute('height', screen.height);
+            iframeElement.setAttribute('width', device-width);
+            iframeElement.setAttribute('height', device-height);
             console.log('iframe loaded: ' + iframe.id);
       };
     }   
@@ -145,7 +145,9 @@ function doMenu() {
 
 // This function exits the app.
 function onExit(){
-	navigator.device.exitApp();
+	alert("close");
+        navigator.device.exitApp();
+        return false;
 }
 
 
