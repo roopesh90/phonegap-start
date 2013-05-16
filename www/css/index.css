@@ -152,3 +152,12 @@ h1 {
 .show-none{
     display: none;
 }
+
+div#menu {
+    width: 30%;
+    background-color: yellow;
+    position:absolute;
+    bottom: 0;
+    left: 35%;
+    display:none;
+}

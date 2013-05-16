@@ -34,6 +34,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -113,6 +114,35 @@ function iframeloader(url) {
             console.log('iframe loaded: ' + iframe.id);
       };
     }   
+}
+
+var menuOpen = false;
+var menuDiv = "";
+
+function startup() {
+        console.log("Business time...");
+        menuDiv = document.querySelector("#menu");
+
+        document.addEventListener("menubutton", doMenu, false);
+}
+
+function doMenu() {
+        console.log("The menu was clicked...");
+        if(menuOpen) {
+                console.log("close the menu");
+                menuDiv.style.display="none";
+                menuOpen = false;
+        } else {
+                console.log("open the menu");
+                menuDiv.style.display="block";
+                menuOpen = true;
+        }
+
+}
+
+// This function exits the app.
+function onExit(){
+	navigator.device.exitApp();
 }
 
 
