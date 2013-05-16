@@ -1,2 +1,5 @@
 # OS X
 .DS_Store
+#Komodo
+.komodotools/
+phonegap-start.komodoproject
