@@ -145,9 +145,9 @@ function doMenu() {
 
 // This function exits the app.
 function onExit(){
-	alert("close");
+	//alert("close");
         navigator.device.exitApp();
-        return false;
+        //return false;
 }
 
 
