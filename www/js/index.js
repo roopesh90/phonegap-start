@@ -241,7 +241,7 @@ function phonegapShake() {
         lastTime = new Date();
         console.log("shake!");
         alert("shake");
-        //pricifyy();
+        pricifyy();
       } else {
         console.log("shook too fast");
         alert("shake too fast");
