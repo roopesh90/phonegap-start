@@ -34,7 +34,8 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        
+        window.addEventListener("orientationchange", orientationChange, true);
+        phonegapShake();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -113,7 +114,7 @@ function iframeloader(url) {
             var iframeElement = document.getElementById("pricfy-web");
             iframeElement.setAttribute('class', 'show');
             iframeElement.setAttribute('width', screen.width+"px");
-            iframeElement.setAttribute('height', screen.height+"px");
+            iframeElement.setAttribute('height', "100%");
             console.log('iframe loaded: ' + iframe.id);
       };
     }   
@@ -143,7 +144,7 @@ function doMenu() {
 
 }
 
-// This function exits the app.
+// These function exits the app and menu button.
 function onExit(){
 	alert("close");
         navigator.app.exitApp();
@@ -155,4 +156,98 @@ function onMenu(){
         return false;
 }
 
+//sprite animation
+var cSpeed=9;
+var cWidth=98;
+var cHeight=98;
+var cTotalFrames=20;
+var cFrameWidth=98;
+var cImageSrc='img/382.png';
 
+var cImageTimeout=false;
+
+function startAnimation(){
+        
+        document.getElementById('loaderImage').innerHTML='<canvas id="canvas" width="'+cWidth+'" height="'+cHeight+'"><p>Your browser does not support the canvas element.</p></canvas>';
+        
+        //FPS = Math.round(100/(maxSpeed+2-speed));
+        FPS = Math.round(100/cSpeed);
+        SECONDS_BETWEEN_FRAMES = 1 / FPS;
+        g_GameObjectManager = null;
+        g_run=genImage;
+
+        g_run.width=cTotalFrames*cFrameWidth;
+        genImage.onload=function (){cImageTimeout=setTimeout(fun, 0)};
+        initCanvas();
+}
+
+
+function imageLoader(s, fun)//Pre-loads the sprites image
+{
+        clearTimeout(cImageTimeout);
+        cImageTimeout=0;
+        genImage = new Image();
+        genImage.onload=function (){cImageTimeout=setTimeout(fun, 0)};
+        genImage.onerror=new Function('alert(\'Could not load the image\')');
+        genImage.src=s;
+}
+
+//The following code starts the animation
+new imageLoader(cImageSrc, 'startAnimation()');
+
+
+//orientation iframe width change
+function orientationChange(e) {
+    var orientation="portrait";
+    if(window.orientation == -90 || window.orientation == 90) orientation = "landscape";
+
+     var iframeElement = document.getElementById("pricfy-web");
+     iframeElement.setAttribute('width', screen.width+"px");
+     console.log(orientation);
+}
+
+
+//phone gap shake
+// based on https://github.com/alexgibson/shake.js/
+function phonegapShake() {
+  var threshold = 15;
+  var lastTime = new Date();
+  var lastX = null;
+  var lastY = null;
+  var lastZ = null;
+ 
+  var success = function (current) {
+    var currentTime, timeDifference, deltaX = 0, deltaY = 0, deltaZ = 0;
+ 
+    if ((lastX === null) && (lastY === null) && (lastZ === null)) {
+      lastX = current.x;
+      lastY = current.y;
+      lastZ = current.z;
+      return;
+    }
+ 
+    deltaX = Math.abs(lastX - current.x);
+    deltaY = Math.abs(lastY - current.y);
+    deltaZ = Math.abs(lastZ - current.z);
+ 
+    if (((deltaX > threshold) && (deltaY > threshold)) || ((deltaX > threshold) && (deltaZ > threshold)) || ((deltaY > threshold) && (deltaZ > threshold))) {
+      currentTime = new Date();
+      timeDifference = currentTime.getTime() - lastTime.getTime();
+ 
+      if (timeDifference > 2000) {
+        var event = document.createEvent('Event');
+        event.initEvent('shake', true, true);
+        window.dispatchEvent(event);
+        lastTime = new Date();
+        console.log("shake!");
+        alert("shake");
+        //pricifyy();
+      } else {
+        console.log("shook too fast");
+        alert("shake too fast");
+      }
+    }
+  };
+ 
+  navigator.accelerometer.watchAcceleration(success, undefined, {frequency: 150});
+}

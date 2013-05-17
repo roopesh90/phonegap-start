@@ -66,12 +66,9 @@ body {
 /* Styles added by Roopesh  
 */
 .page-loader{
-	background:url(../img/382.gif) no-repeat center; /* 180px x 115px */
+    *background:url(../img/382.gif) no-repeat center; /* 180px x 115px */
     *position:absolute;             /* position in the center of the screen */
-    margin-left:25%;
-    top:50%;
-    height:100px;                   /* text area height */
-    width: 100px;                   /* text area width */
+    *margin-left:25%;
     text-align:center;
    * padding:10px 10px 10px 10px;     /* image height is 200px (bottom 20px are overlapped with text) */
    * margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
@@ -94,6 +91,7 @@ body {
 		position: absolute;
 		background-position: center;
 		margin: 26px 0px 0px -35px;
+		top: 50%;
 	}
 }
 

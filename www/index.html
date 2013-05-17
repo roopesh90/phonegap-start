@@ -28,7 +28,7 @@
     <body>
         <div class="app" id="app">
             <!-- <h1 style="text-transform: none;">Pricify.me <br> Mobile</h1> -->
-			<p class="page-loader"> </p>
+	    <div id="loaderImage" class="page-loader"></div>
             <div id="deviceready" class="blink" style="text-transform: none;">
                 <p class="event listening">Connecting to Pricify.me, Please Wait</p>
                 <p class="event received">Pricify.me is Ready</p>		
@@ -39,6 +39,7 @@
 	
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/canvas.js"></script>
         <script type="text/javascript">
             app.initialize();
 	    //window.location.href="http://54.225.113.123/fetches?page=1";
