@@ -50,7 +50,8 @@ var app = {
         setTimeout(function(){
             parentElement.getAttribute('class'); 
              parentElement.className += " show-none";
-             iframeloader("http://54.225.113.123/fetches?page=1");
+             //iframeloader("http://54.225.113.123/fetches?page=1");
+             framewrapper("http://54.225.113.123/fetches?page=1");
         //iframeElement.className += " MyClass";
         }, 300);
          console.log('Received Event: ' + id);
@@ -102,7 +103,9 @@ function iframeloader(url) {
            // parentElement.getAttribute('class'); 
              parentElement.setAttribute('class'," show-none");
             var iframeElement = document.getElementById("pricfy-web");
-            iframeElement.setAttribute('class', 'show');
+             iframeElement.setAttribute('class', 'show');
+            iframeElement.setAttribute('width', "100%");
+            iframeElement.setAttribute('height', "100%");
             console.log('iframe loaded: ' + iframe.id);
         }
       };
@@ -113,13 +116,21 @@ function iframeloader(url) {
             parentElement.setAttribute('class'," show-none");
             var iframeElement = document.getElementById("pricfy-web");
             iframeElement.setAttribute('class', 'show');
-            iframeElement.setAttribute('width', screen.width+"px");
+            iframeElement.setAttribute('width', "100%");
             iframeElement.setAttribute('height', "100%");
             console.log('iframe loaded: ' + iframe.id);
       };
     }   
 }
 
+//inapp browser
+function framewrapper(url) {
+   var ref = window.open(url, '_blank', 'location=yes');
+         ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
+         ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
+         ref.addEventListener('exit', function() { alert(event.type); });
+}
+ 
 var menuOpen = false;
 var menuDiv = "";
 
@@ -251,3 +262,4 @@ function phonegapShake() {
  
   navigator.accelerometer.watchAcceleration(success, undefined, {frequency: 150});
 }
+
