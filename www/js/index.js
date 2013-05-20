@@ -129,8 +129,9 @@ function framewrapper(url) {
    //      ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
    //      ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
    //      ref.addEventListener('exit', function() { alert(event.type); });
-    navigator.app.loadUrl(url, { openExternal:false });
-   
+    
+    //navigator.app.loadUrl(url, { openExternal:false });
+   window.plugins.childBrowser.showWebPage(url, { showLocationBar: false });
 }
  
 var menuOpen = false;
