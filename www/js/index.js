@@ -129,7 +129,7 @@ function framewrapper(url) {
    //      ref.addEventListener('loadstart', function() { alert('start: ' + event.url); });
    //      ref.addEventListener('loadstop', function() { alert('stop: ' + event.url); });
    //      ref.addEventListener('exit', function() { alert(event.type); });
-    navigator.app.loadUrl(url, { openExternal:true });
+    navigator.app.loadUrl(url, { openExternal:false });
    
 }
  
